@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
     const posts = await loadPostsCollection();
     await posts.insertOne({
         text: req.body.text,
-        createAt: new Date()
+        createdAt: new Date()
     });
     res.status(201).send();
 })
@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 //Delete Posts
 router.delete('/:id', async (req, res) => {
     const posts = await loadPostsCollection();
-    await posts.deleteOne({ _id: new mongodb.ObjectId(req.param.id) });
+    await posts.deleteOne({_id:new mongodb.ObjectId(req.params.id)});
     res.status(200).send();
 })
 
